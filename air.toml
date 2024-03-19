@@ -1,0 +1,5 @@
+build_cmd = "go build -o ./tmp/main ."
+poll = true
+root = "."
+run_cmd = "./tmp/main"
+tmp_dir = "tmp"
