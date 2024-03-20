@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func MainLayout() templ.Component {
+func MainLayout(title string) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -23,7 +23,28 @@ func MainLayout() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><title>QuizApp</title><meta charset=\"UTF-8\"><meta name=\"description\" content=\"Bulls and Cows Telegram Bot number picker\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"><script src=\"/assets/scripts/htmx.min.js\"></script><link rel=\"stylesheet\" href=\"/assets/styles/global.css\"></head><body class=\"bg-gray-900 h-dvh max-h-dvh overflow-hidden align-stretch flex flex-col justify-between antialiased text-white/[0.9]\"><div class=\"transition-all duration-1000 overflow-hidden opacity-100 flex flex-1 flex-col xl:justify-center\" id=\"login\"><div class=\"flex flex-1 xl:flex-none justify-center flex-col bg-gray-900\"><h1 class=\"px-2 text-6xl font-normal text-center mt-6\">h<span class=\"text-white font-bold\">Q</span>uiz\r</h1><span class=\"text-2xl xl:mb-4 text-center mt-4 px-2 font-light text-slate-300\">Welcome to the htm<span class=\"font-bold\">x</span> Quiz App\r</span></div><div class=\"xl:max-w-[300px] xl:self-center xl:mb-8 bg-gray-800 p-4 flex flex-col items-stretch shadow-xl z-10 mx-4 rounded-lg border border-white/[0.06]\"><h2 class=\"text-md font-normal text-center\">Sign in following one of the options\r</h2><div class=\"mx-8 mb-6 mt-4 bg-white/[0.24] h-0.5\"></div><button hx-get=\"/api/auth/sign-in\" type=\"submit\" class=\"inline-flex justify-center w-full p-3 bg-blue-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\">Discord\r</button> <button type=\"submit\" class=\"mt-2 inline-flex justify-center w-full p-3 bg-red-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500\">Google\r</button></div></div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><title>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var2 string
+		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `layout\main_layout.templ`, Line: 7, Col: 17}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><meta charset=\"UTF-8\"><meta name=\"description\" content=\"Bulls and Cows Telegram Bot number picker\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"><script src=\"/assets/scripts/htmx.min.js\"></script><link rel=\"stylesheet\" href=\"/assets/styles/index.css\"></head><body class=\"bg-gray-900 h-dvh max-h-dvh overflow-hidden align-stretch flex flex-col justify-between antialiased text-white/[0.9]\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templ_7745c5c3_Var1.Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

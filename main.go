@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"htmxgo/core"
-	views "htmxgo/views/layout"
+	pages "htmxgo/views/pages"
 	"log"
 	"net/http"
 	"os"
@@ -109,7 +109,7 @@ func main() {
 	})
 
 	router.GET("/", func(c *gin.Context) {
-		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, views.MainLayout())
+		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.Home())
 		c.Render(http.StatusOK, r)
 	})
 

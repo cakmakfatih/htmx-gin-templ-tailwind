@@ -1,0 +1,12 @@
+package views
+
+import (
+	layouts "htmxgo/views/layout"
+	components "htmxgo/views/components"
+)
+
+templ Home() {
+	@layouts.MainLayout("QuizApp - Home") {
+		@components.Login()
+	}
+}

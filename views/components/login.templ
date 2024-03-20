@@ -1,0 +1,40 @@
+package views
+
+templ Login() {
+	<div
+		class="transition-all duration-1000 overflow-hidden opacity-100 flex flex-1 flex-col xl:justify-center"
+		id="login"
+	>
+		<div class="flex flex-1 xl:flex-none justify-center flex-col bg-gray-900">
+			<h1 class="px-2 text-6xl font-normal text-center mt-6">
+				h<span class="text-white font-bold">Q</span>uiz
+			</h1>
+			<span
+				class="text-2xl xl:mb-4 text-center mt-4 px-2 font-light text-slate-300"
+			>
+				Welcome to the htm<span class="font-bold">x</span> QuizApp
+			</span>
+		</div>
+		<div
+			class="xl:max-w-[300px] xl:self-center xl:mb-8 bg-gray-800 p-4 flex flex-col items-stretch shadow-xl z-10 mx-4 rounded-lg border border-white/[0.06]"
+		>
+			<h2 class="text-md font-normal text-center">
+				Sign in following one of the options
+			</h2>
+			<div class="mx-8 mb-6 mt-4 bg-white/[0.24] h-0.5"></div>
+			<button
+				hx-get="/api/auth/sign-in"
+				type="submit"
+				class="inline-flex justify-center w-full p-3 bg-blue-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+			>
+				Discord
+			</button>
+			<button
+				type="submit"
+				class="mt-2 inline-flex justify-center w-full p-3 bg-red-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+			>
+				Google
+			</button>
+		</div>
+	</div>
+}
