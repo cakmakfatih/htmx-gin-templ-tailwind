@@ -36,7 +36,7 @@ func Home(user *models.UserModel) templ.Component {
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
 			if user != nil {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>You're logged in.</h1>")
+				templ_7745c5c3_Err = components.Dashboard(user).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -51,7 +51,7 @@ func Home(user *models.UserModel) templ.Component {
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = layouts.MainLayout("QuizApp - Home").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layouts.MainLayout("hQuiz").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

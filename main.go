@@ -9,7 +9,6 @@ import (
 	pages "htmxgo/views/pages"
 	"log"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/a-h/templ/examples/integration-gin/gintemplrenderer"
@@ -19,7 +18,7 @@ import (
 
 func staticCacheMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if strings.HasPrefix(c.Request.URL.Path, "/assets/") {
+		if strings.HasSuffix(c.Request.URL.Path, "/assets/") {
 			c.Header("Cache-Control", "public, max-age=86400")
 		}
 
@@ -55,6 +54,7 @@ func registerRoutes(router *gin.Engine) {
 
 func main() {
 	core.LoadEnv()
+	core.InitConfig()
 	core.InitDb()
 
 	router := gin.Default()
@@ -62,5 +62,5 @@ func main() {
 	setupRouter(router)
 	registerRoutes(router)
 
-	router.Run(fmt.Sprintf("0.0.0.0:%v", os.Getenv("PORT")))
+	router.Run(fmt.Sprintf("0.0.0.0:%v", core.Config.Port))
 }

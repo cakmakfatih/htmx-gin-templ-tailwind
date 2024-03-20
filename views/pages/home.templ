@@ -7,9 +7,9 @@ import (
 )
 
 templ Home(user *models.UserModel) {
-	@layouts.MainLayout("QuizApp - Home") {
+	@layouts.MainLayout("hQuiz") {
 		if user != nil {
-			<h1>You're logged in.</h1>
+			@components.Dashboard(user)
 		} else {
 			@components.Login()
 		}

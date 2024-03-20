@@ -14,7 +14,8 @@ type UserModel struct {
 }
 
 type UserMetaData struct {
-	Picture string `json:"picture"`
+	Picture  string `json:"picture"`
+	FullName string `json:"full_name"`
 }
 
 func (UserModel) UserFromContext(c *gin.Context) *UserModel {
