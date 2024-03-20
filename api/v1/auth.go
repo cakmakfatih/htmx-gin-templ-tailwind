@@ -49,7 +49,7 @@ func signInWithDiscord(c *gin.Context) {
 	c.Status(http.StatusAccepted)
 }
 
-func RegisterAuth(apiGroup *gin.RouterGroup) {
+func registerAuth(apiGroup *gin.RouterGroup) {
 	group := apiGroup.Group("/auth")
 
 	group.GET("/sign-in-with-discord", signInWithDiscord)
