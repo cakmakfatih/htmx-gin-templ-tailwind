@@ -4,12 +4,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/assets/scripts/htmx.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     <link rel="stylesheet" href="/assets/styles/global.css" />
-    <title>Document</title>
+    <title>HQuiz - {{.title}}}</title>
   </head>
-  <body>
-    <h1>{{.title}}</h1>
+  <body
+    class="bg-gray-900 h-dvh max-h-dvh overflow-hidden align-stretch flex flex-col justify-between antialiased text-white/[0.9]"
+  >
+    {{ template "login" . }}
+    {{ template "loader" . }}
   </body>
 </html>
 {{ end }}
