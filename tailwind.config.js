@@ -2,6 +2,6 @@
 
 module.exports = {
   content: [
-    './views/**/*.{tmpl,html,js}'
+    './views/**/*.{templ,html,js}'
   ],
 }
