@@ -1,12 +1,17 @@
 package views
 
 import (
+	"htmxgo/models"
 	layouts "htmxgo/views/layout"
 	components "htmxgo/views/components"
 )
 
-templ Home() {
+templ Home(user *models.UserModel) {
 	@layouts.MainLayout("QuizApp - Home") {
-		@components.Login()
+		if user != nil {
+			<h1>You're logged in.</h1>
+		} else {
+			@components.Login()
+		}
 	}
 }

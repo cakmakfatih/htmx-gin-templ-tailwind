@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"htmxgo/api/v1"
 	"htmxgo/core"
+	"htmxgo/middlewares"
+	"htmxgo/models"
 	pages "htmxgo/views/pages"
 	"log"
 	"net/http"
@@ -46,8 +48,10 @@ func main() {
 
 	api.RegisterApi(router)
 
-	router.GET("/", func(c *gin.Context) {
-		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.Home())
+	router.GET("/", middlewares.UserMiddleware, func(c *gin.Context) {
+		userModel := models.UserModel.UserFromContext(models.UserModel{}, c)
+
+		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.Home(userModel))
 		c.Render(http.StatusOK, r)
 	})
 
