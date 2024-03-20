@@ -12,7 +12,7 @@ templ Login() {
 			<span
 				class="text-2xl xl:mb-4 text-center mt-4 px-2 font-light text-slate-300"
 			>
-				Welcome to the htm<span class="font-bold">x</span> QuizApp
+				Welcome to the htm<span class="font-bold">x</span>-<span class="font-bold">GO</span> QuizApp
 			</span>
 		</div>
 		<div
@@ -25,13 +25,13 @@ templ Login() {
 			<button
 				hx-get="/api/v1/auth/sign-in-with-discord"
 				type="submit"
-				class="inline-flex justify-center w-full p-3 bg-blue-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				class="transition-all inline-flex justify-center w-full p-3 bg-blue-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hover:bg-blue-800"
 			>
 				Discord
 			</button>
 			<button
 				type="submit"
-				class="mt-2 inline-flex justify-center w-full p-3 bg-red-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				class="transition-all mt-2 inline-flex justify-center w-full p-3 bg-red-600 border border-white/[0.11] rounded-md shadow-sm text-xl font-medium tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hover:bg-red-800"
 			>
 				Google
 			</button>
