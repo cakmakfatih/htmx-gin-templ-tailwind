@@ -27,12 +27,7 @@ func staticCacheMiddleware() gin.HandlerFunc {
 	}
 }
 
-func main() {
-	core.LoadEnv()
-	core.InitDb()
-
-	router := gin.Default()
-
+func setupRouter(router *gin.Engine) {
 	err := router.SetTrustedProxies(nil)
 
 	if err != nil {
@@ -45,7 +40,9 @@ func main() {
 
 	ginHtmlRenderer := router.HTMLRender
 	router.HTMLRender = &gintemplrenderer.HTMLTemplRenderer{FallbackHtmlRenderer: ginHtmlRenderer}
+}
 
+func registerRoutes(router *gin.Engine) {
 	api.RegisterApi(router)
 
 	router.GET("/", middlewares.UserMiddleware, func(c *gin.Context) {
@@ -54,6 +51,16 @@ func main() {
 		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.Home(userModel))
 		c.Render(http.StatusOK, r)
 	})
+}
+
+func main() {
+	core.LoadEnv()
+	core.InitDb()
+
+	router := gin.Default()
+
+	setupRouter(router)
+	registerRoutes(router)
 
 	router.Run(fmt.Sprintf("0.0.0.0:%v", os.Getenv("PORT")))
 }
