@@ -13,6 +13,7 @@ import "bytes"
 import (
 	"htmxgo/models"
 	components "htmxgo/views/components"
+	fragments "htmxgo/views/fragments"
 	layouts "htmxgo/views/layout"
 )
 
@@ -36,7 +37,7 @@ func Home(user *models.UserModel) templ.Component {
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
 			if user != nil {
-				templ_7745c5c3_Err = components.Dashboard(user).Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = fragments.Dashboard(user).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

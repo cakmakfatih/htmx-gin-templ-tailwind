@@ -4,12 +4,13 @@ import (
 	"htmxgo/models"
 	layouts "htmxgo/views/layout"
 	components "htmxgo/views/components"
+	fragments "htmxgo/views/fragments"
 )
 
 templ Home(user *models.UserModel) {
 	@layouts.MainLayout("hQuiz") {
 		if user != nil {
-			@components.Dashboard(user)
+			@fragments.Dashboard(user)
 		} else {
 			@components.Login()
 		}
