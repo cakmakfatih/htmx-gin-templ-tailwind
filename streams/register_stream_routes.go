@@ -1,14 +1,14 @@
 package streams
 
 import (
-	"fmt"
 	"htmxgo/entities"
 	"htmxgo/middlewares"
 	"io"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
+
+var ArenaQuizStream *entities.StreamEventEntity
 
 func registerStreamChannel(c *gin.Context) {
 	v, ok := c.Get("clientChan")
@@ -33,24 +33,5 @@ func registerStreamChannel(c *gin.Context) {
 }
 
 func RegisterStreamRoutes(router *gin.Engine) {
-	streamEventEntity := NewStreamServer()
-
-	duration := 15 * time.Minute
-	endTime := time.Now().Add(duration)
-
-	go func() {
-		for {
-			time.Sleep(time.Second * 1)
-
-			remaining := time.Until(endTime)
-			minutes := remaining / time.Minute
-			seconds := (remaining % time.Minute) / time.Second
-
-			timeString := fmt.Sprintf("%02d:%02d", minutes, seconds)
-
-			streamEventEntity.Message <- timeString
-		}
-	}()
-
-	router.GET("/event-stream", middlewares.SSEHeaderMiddleware, streamEventEntity.ServeHTTP(), registerStreamChannel)
+	router.GET("/event-stream", middlewares.SSEHeaderMiddleware, ArenaQuizStream.ServeHTTP(), registerStreamChannel)
 }

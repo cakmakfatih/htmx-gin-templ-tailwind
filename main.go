@@ -8,6 +8,7 @@ import (
 	"htmxgo/middlewares"
 	"htmxgo/models"
 	"htmxgo/streams"
+	"htmxgo/tasks"
 	pages "htmxgo/views/pages"
 	"log"
 	"net/http"
@@ -60,6 +61,7 @@ func main() {
 	core.LoadEnv()
 	core.InitConfig()
 	core.InitDb()
+	tasks.InitScheduler()
 
 	router := gin.Default()
 
