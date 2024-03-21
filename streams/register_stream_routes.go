@@ -34,6 +34,7 @@ func registerStreamChannel(c *gin.Context) {
 
 func RegisterStreamRoutes(router *gin.Engine) {
 	streamEventEntity := NewStreamServer()
+
 	duration := 15 * time.Minute
 	endTime := time.Now().Add(duration)
 

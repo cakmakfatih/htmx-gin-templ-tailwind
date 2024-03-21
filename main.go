@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"htmxgo/api/v1"
+	"htmxgo/controllers"
 	"htmxgo/core"
 	"htmxgo/middlewares"
 	"htmxgo/models"
 	"htmxgo/streams"
 	pages "htmxgo/views/pages"
-	tabs "htmxgo/views/tabs"
 	"log"
 	"net/http"
 	"strings"
@@ -45,16 +45,13 @@ func setupRouter(router *gin.Engine) {
 
 func registerRoutes(router *gin.Engine) {
 	api.RegisterApi(router)
+	streams.RegisterStreamRoutes(router)
+	controllers.RegisterPartials(router)
 
 	router.GET("/", middlewares.UserMiddleware, func(c *gin.Context) {
 		userModel := models.UserModel.UserFromContext(models.UserModel{}, c)
 
 		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.Home(userModel))
-		c.Render(http.StatusOK, r)
-	})
-
-	router.GET("/partials/tabs/games", func(c *gin.Context) {
-		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, tabs.GamesTab())
 		c.Render(http.StatusOK, r)
 	})
 }
@@ -68,7 +65,6 @@ func main() {
 
 	setupRouter(router)
 	registerRoutes(router)
-	streams.RegisterStreamRoutes(router)
 
 	router.Run(fmt.Sprintf("0.0.0.0:%v", core.Config.Port))
 }
