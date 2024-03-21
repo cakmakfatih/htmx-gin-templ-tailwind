@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .htmx-indicator {
+    @apply invisible hidden;
+  }
+
+  .htmx-request.htmx-indicator {
+    @apply visible flex flex-1 flex-col;
+  }
+
+  .nav-button {
+    @apply transition-all mt-2 inline-flex justify-center py-3 px-6 bg-gray-900 border border-white/[0.11] rounded-full shadow-sm tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-gray-700;
+  }
+
+  .nav-button.active {
+    @apply bg-gray-700;
+  }
+}

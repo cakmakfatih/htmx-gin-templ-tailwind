@@ -7,9 +7,11 @@ import (
 	"htmxgo/middlewares"
 	"htmxgo/models"
 	pages "htmxgo/views/pages"
+	tabs "htmxgo/views/tabs"
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/a-h/templ/examples/integration-gin/gintemplrenderer"
 	"github.com/gin-contrib/gzip"
@@ -48,6 +50,13 @@ func registerRoutes(router *gin.Engine) {
 		userModel := models.UserModel.UserFromContext(models.UserModel{}, c)
 
 		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, pages.Home(userModel))
+		c.Render(http.StatusOK, r)
+	})
+
+	router.GET("/partials/tabs/games", func(c *gin.Context) {
+		time.Sleep(time.Second * 3)
+
+		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, tabs.GamesTab())
 		c.Render(http.StatusOK, r)
 	})
 }

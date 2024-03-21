@@ -36,7 +36,7 @@ func Dashboard(user *models.UserModel) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"flex justify-center m-4 py-3 px-4 rounded-full bg-white text-gray-600 font-bold\"><h1 class=\"text-xl\">Arena Quiz in 14:33</h1></div></div><div class=\"flex flex-col flex-1\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"flex justify-center m-4 py-3 px-4 rounded-full bg-white text-gray-600 font-bold\"><h1 class=\"text-xl\">Arena Quiz in 14:33</h1></div></div><div id=\"tabContainer\" class=\"flex flex-col flex-1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -44,7 +44,7 @@ func Dashboard(user *models.UserModel) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"tabView\"></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

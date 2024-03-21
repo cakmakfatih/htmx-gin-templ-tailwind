@@ -38,7 +38,7 @@ func UserCard(user *models.UserModel) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"user image\"><h1 class=\"text-center text-2xl mt-1 tracking-wider mb-2\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" alt=\"user image\"><h1 class=\"text-center text-2xl mt-4 tracking-wider mb-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -51,7 +51,7 @@ func UserCard(user *models.UserModel) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><div class=\"flex self-stretch mt-4 justify-around px-6 font-bold\"><button class=\"transition-all mt-2 inline-flex justify-center py-3 px-6 bg-gray-900 border border-white/[0.11] rounded-full shadow-sm text-md tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-gray-700\"><span>QP</span><span class=\"ml-1 text-white/[0.67]\">1329</span></button> <button class=\"transition-all mt-2 inline-flex justify-center py-3 px-6 bg-gray-700 border border-white/[0.11] rounded-full shadow-sm text-md tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-gray-700\"><span>History</span></button> <button class=\"transition-all mt-2 inline-flex justify-center py-3 px-6 bg-gray-900 border border-white/[0.11] rounded-full shadow-sm text-md tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-offset-2 hover:bg-gray-700\"><span>Rank</span><span class=\"ml-1 text-white/[0.67]\">10</span></button></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><div class=\"flex self-stretch mt-4 justify-around px-6 font-bold\"><button _=\"on click remove .active from &lt;button.nav-button.active/&gt; then add .active to me\" class=\"nav-button\"><span>QP</span><span class=\"ml-1 text-white/[0.67]\">1329</span></button> <button _=\"on click remove .active from &lt;button.nav-button.active/&gt; then add .active to me\" hx-trigger=\"click, load\" hx-get=\"/partials/tabs/games\" hx-swap=\"outerHTML transition:true\" hx-target=\"#tabView\" hx-indicator=\"#listTxtLoader\" class=\"nav-button active\"><span>Games</span></button> <button _=\"on click remove .active from &lt;button.nav-button.active/&gt; then add .active to me\" class=\"nav-button\"><span>Rank</span><span class=\"ml-1 text-white/[0.67]\">10</span></button></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

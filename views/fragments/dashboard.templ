@@ -13,8 +13,9 @@ templ Dashboard(user *models.UserModel) {
 				<h1 class="text-xl">Arena Quiz in 14:33</h1>
 			</div>
 		</div>
-		<div class="flex flex-col flex-1">
+		<div id="tabContainer" class="flex flex-col flex-1">
 			@components.ListTxtLoader()
+			<div id="tabView"></div>
 		</div>
 	</div>
 }
