@@ -23,7 +23,7 @@ templ UserCard(user *models.UserModel) {
 				_="on click remove .active from <button.nav-button.active/> then add .active to me"
 				hx-trigger="click, load"
 				hx-get="/partials/tabs/games"
-				hx-swap="outerHTML transition:true"
+				hx-swap="innerHTML transition:true"
 				hx-target="#tabView"
 				hx-indicator="#listTxtLoader"
 				class="nav-button active"
@@ -34,7 +34,7 @@ templ UserCard(user *models.UserModel) {
 				_="on click remove .active from <button.nav-button.active/> then add .active to me"
 				class="nav-button"
 			>
-				<span>Rank</span><span class="ml-1 text-white/[0.67]">10</span>
+				<span>Rank</span><span class="ml-1 text-white/[0.67]">9</span>
 			</button>
 		</div>
 	</div>

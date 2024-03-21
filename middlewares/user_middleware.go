@@ -48,7 +48,7 @@ func renewToken(c *gin.Context, accessToken string, refreshToken string) (*supab
 		return nil, err
 	}
 
-	c.SetCookie("Session", authDetails.AccessToken+"|"+authDetails.RefreshToken, 3600, "/", "localhost", false, true)
+	c.SetCookie("Session", authDetails.AccessToken+"|"+authDetails.RefreshToken, 3600*24, "/", "localhost", false, true)
 	user, err := core.DbClient.Auth.User(context.Background(), authDetails.AccessToken)
 
 	if err != nil {

@@ -13,6 +13,7 @@ import "bytes"
 import (
 	"htmxgo/models"
 	components "htmxgo/views/components"
+	layout "htmxgo/views/layout"
 )
 
 func Dashboard(user *models.UserModel) templ.Component {
@@ -36,7 +37,7 @@ func Dashboard(user *models.UserModel) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"flex justify-center m-4 py-3 px-4 rounded-full bg-white text-gray-600 font-bold\"><h1 class=\"text-xl\">Arena Quiz in 14:33</h1></div></div><div id=\"tabContainer\" class=\"flex flex-col flex-1\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"flex justify-center m-4 py-3 px-4 rounded-full bg-white text-gray-600 font-bold\"><h1 class=\"text-xl\">Arena Quiz in <span hx-ext=\"sse\" sse-connect=\"/event-stream\" sse-swap=\"message\">14:33</span></h1></div></div><div id=\"tabContainer\" class=\"flex flex-col flex-1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -44,7 +45,11 @@ func Dashboard(user *models.UserModel) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"tabView\"></div></div></div>")
+		templ_7745c5c3_Err = layout.TabLayout().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

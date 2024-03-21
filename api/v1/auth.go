@@ -30,7 +30,7 @@ func providerAuthCallback(c *gin.Context) {
 	}
 
 	c.SetCookie("Code-Verifier", "", -1, "/", "localhost", false, true)
-	c.SetCookie("Session", user.AccessToken+"|"+user.RefreshToken, 3600, "/", "localhost", false, true)
+	c.SetCookie("Session", user.AccessToken+"|"+user.RefreshToken, 3600*24, "/", "localhost", false, true)
 
 	c.Redirect(http.StatusPermanentRedirect, "/")
 }
