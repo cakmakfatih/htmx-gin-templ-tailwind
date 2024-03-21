@@ -14,7 +14,7 @@ func renderGamesTab(c *gin.Context) {
 }
 
 func RegisterPartials(router *gin.Engine) {
-	partialsGroup := router.Group("/partials")
+	group := router.Group("/partials")
 
-	partialsGroup.GET("/tabs/games", renderGamesTab)
+	group.GET("/tabs/games", renderGamesTab)
 }
