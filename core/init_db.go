@@ -2,7 +2,6 @@ package core
 
 import (
 	"log"
-	"os"
 
 	supa "github.com/nedpals/supabase-go"
 )
@@ -10,10 +9,7 @@ import (
 var DbClient *supa.Client
 
 func InitDb() {
-	supabaseUrl := os.Getenv("SUPABASE_URL")
-	supabaseKey := os.Getenv("SUPABASE_KEY")
-
-	DbClient = supa.CreateClient(supabaseUrl, supabaseKey)
+	DbClient = supa.CreateClient(Config.SupabaseUrl, Config.SupabaseKey)
 
 	log.Println("Connected to Supabase")
 }
