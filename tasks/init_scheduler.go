@@ -2,6 +2,7 @@ package tasks
 
 import (
 	"fmt"
+	"htmxgo/models"
 	"htmxgo/streams"
 	"log"
 	"time"
@@ -17,7 +18,10 @@ func InitScheduler() {
 	}
 
 	arenaQuizIntervalDuration := 5 * time.Minute
-	endTime := time.Now().Add(arenaQuizIntervalDuration)
+	arenaQuizDuration := 5 * time.Minute
+
+	startTime := time.Now().Truncate(arenaQuizIntervalDuration)
+	endTime := startTime.Add(arenaQuizDuration)
 
 	streams.ArenaQuizStream = streams.NewStreamServer()
 
@@ -26,11 +30,20 @@ func InitScheduler() {
 			arenaQuizIntervalDuration,
 		),
 		gocron.NewTask(
-			func() {
-				endTime = time.Now().Add(arenaQuizIntervalDuration)
+			func(st *time.Time, et *time.Time) {
+				*st = time.Now().Truncate(time.Minute).Add(arenaQuizIntervalDuration)
+				*et = st.Add(arenaQuizDuration)
+
+				models.GameModel{
+					StartTime:  st.UTC(),
+					FinishTime: et.UTC(),
+				}.Insert()
 			},
+			&startTime,
+			&endTime,
 		),
 		gocron.WithSingletonMode(1),
+		gocron.WithStartAt(gocron.WithStartImmediately()),
 	)
 
 	if err != nil {
@@ -42,8 +55,9 @@ func InitScheduler() {
 			time.Second,
 		),
 		gocron.NewTask(
-			func() {
-				remaining := time.Until(endTime)
+			func(t *time.Time) {
+				remaining := time.Until(*t)
+
 				minutes := remaining / time.Minute
 				seconds := (remaining % time.Minute) / time.Second
 
@@ -51,6 +65,7 @@ func InitScheduler() {
 
 				streams.ArenaQuizStream.Message <- timeString
 			},
+			&startTime,
 		),
 		gocron.WithSingletonMode(1),
 	)

@@ -37,7 +37,7 @@ func Dashboard(user *models.UserModel) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"flex justify-center m-4 py-3 px-4 rounded-full bg-white text-gray-600 font-bold\"><h1 class=\"text-xl\">Arena Quiz in <span hx-ext=\"sse\" sse-connect=\"/event-stream\" sse-swap=\"message\"></span></h1></div></div><div id=\"tabContainer\" class=\"flex flex-col flex-1\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div><div class=\"flex justify-center m-4 py-3 px-4 rounded-full bg-white text-gray-600 font-normal\"><h1 class=\"text-xl\">Arena Quiz in <span class=\"font-bold\" hx-ext=\"sse\" sse-connect=\"/event-stream\" sse-swap=\"message\"></span></h1></div></div><div id=\"tabContainer\" class=\"flex flex-col flex-1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
